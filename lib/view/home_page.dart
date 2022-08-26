@@ -31,9 +31,9 @@ class _HomePageState extends State<HomePage> {
   void init() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      title = prefs.getString(kTitleKey)!;
-      comment = prefs.getString(kCommentKey)!;
-      icon = prefs.getBool(kIconKey)!;
+      title = prefs.getString(kTitleKey) ?? '';
+      comment = prefs.getString(kCommentKey) ?? '';
+      icon = prefs.getBool(kIconKey) ?? false;
     });
   }
 
@@ -85,8 +85,8 @@ class _HomePageState extends State<HomePage> {
                       prefs.setBool(kIconKey, true);
                       setState(() {
                         // データを読み込む
-                        title = prefs.getString(kTitleKey)!;
-                        comment = prefs.getString(kCommentKey)!;
+                        title = prefs.getString(kTitleKey) ?? '';
+                        comment = prefs.getString(kCommentKey) ?? '';
                         prefs.setBool(kIconKey, true);
                         if (title != '' && comment != '') {
                           icon = true;
